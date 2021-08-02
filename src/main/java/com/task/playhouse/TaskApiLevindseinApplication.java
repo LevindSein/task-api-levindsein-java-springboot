@@ -1,4 +1,4 @@
-package com.task.playhouse.taskapilevindsein;
+package com.task.playhouse;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
