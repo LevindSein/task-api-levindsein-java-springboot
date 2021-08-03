@@ -8,8 +8,10 @@ GET = localhost:9090/api/hello
 
 POST = localhost:9090/api/{id}
 // Request Body
-firstName : "foo"
-lasName : "foo"
+{
+   "firstName" : "foo"
+   "lasName" : "foo"
+}
 
 + Read by Id
 
