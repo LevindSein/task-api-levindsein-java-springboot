@@ -9,7 +9,7 @@ GET = localhost:9090/api/hello
 POST = localhost:9090/api/{id}
 // Request Body
 {
-   "firstName" : "foo"
+   "firstName" : "foo",
    "lasName" : "foo"
 }
 
