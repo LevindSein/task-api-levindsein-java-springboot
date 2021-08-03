@@ -7,34 +7,41 @@ Usage
 
 :heavy_check_mark: Hello World
 
-<b>GET</b> = localhost:9090/api/hello
-
------
-
+<b>GET</b>
+```ruby
+localhost:9090/api/hello
+```
 :heavy_check_mark: Create or update
 
-<b>POST</b> = localhost:9090/api/{id}  
-=> Request Body  
+<b>POST</b>
+```ruby
+localhost:9090/api/{id}
+```
+Request Body
+```  
 {  
    "firstName" : "foo",  
    "lasName" : "foo"  
 }
-
------
-
+```
 :heavy_check_mark: Read by Id
 
-<b>GET</b> = localhost:9090/api/{id}
-
+<b>GET</b>
+```ruby
+localhost:9090/api/{id}
+```
 :heavy_check_mark: Read All
 
-<b>GET</b> = localhost:9090/api/all
-
------
-
+<b>GET</b>
+```ruby
+localhost:9090/api/all
+```
 :heavy_check_mark: Delete by Id
 
-<b>POST</b> = localhost:9090/api/destroy/{id}
+<b>POST</b>
+```ruby
+localhost:9090/api/destroy/{id}
+```
 
 Configuration
 ------------- 
