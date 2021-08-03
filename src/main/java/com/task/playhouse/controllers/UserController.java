@@ -14,6 +14,8 @@ import com.task.playhouse.models.entities.User;
 import com.task.playhouse.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 @RestController
 @RequestMapping("/api")
@@ -23,16 +25,18 @@ public class UserController{
     private UserService userService;
 
     @PostMapping("/{id}")
-    public User create(@PathVariable("id") Long id, @RequestBody User user){
-        if(id > 0 && id < 10){
+    public ResponseEntity<?> create(@PathVariable("id") Long id, @RequestBody User user){
+        if (id > 0 && id < 10) {
             String fullName = user.getFirstName() + " " + user.getLastName();
             user.setId(id);
             user.setFullName(fullName);
+            return new ResponseEntity<>(userService.save(user), HttpStatus.OK);
         }
-        else{
-            //Return 401 ?
-        }
-        return userService.save(user);
+        
+        HashMap<String, String> map = new HashMap<>();
+        map.put("status", "401");
+        map.put("msg", "empty");
+        return new ResponseEntity<>(map, HttpStatus.UNAUTHORIZED);
     }
 
     @GetMapping("/hello")
