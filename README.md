@@ -1,31 +1,31 @@
 <p align="center"><img src="https://seeklogo.com/images/S/spring-boot-logo-9D6125D4E7-seeklogo.com.png" width="400"></p>
 
-Levind Sein test API Java Springboot with Maven
+<p align="center">Levind Sein test API Java Springboot with Maven</p>
 
-+ Hello World
+:heavy_check_mark: Hello World
 
-GET = localhost:9090/api/hello
+<b>GET</b> = localhost:9090/api/hello
 
-+ Create or update
+:heavy_plus_sign: Create or update
 
-POST = localhost:9090/api/{id}  
+<b>POST</b> = localhost:9090/api/{id}  
 => Request Body  
 {  
    "firstName" : "foo",  
    "lasName" : "foo"  
 }
 
-+ Read by Id
+:o: Read by Id
 
-GET = localhost:9090/api/{id}
+<b>GET</b> = localhost:9090/api/{id}
 
-+ Read All
+:o: Read All
 
-GET = localhost:9090/api/all
+<b>GET</b> = localhost:9090/api/all
 
-+ Delete by Id
+:heavy_minus_sign: Delete by Id
 
-POST = localhost:9090/api/destroy/{id}
+<b>POST</b> = localhost:9090/api/destroy/{id}
 
 ========================================
 
