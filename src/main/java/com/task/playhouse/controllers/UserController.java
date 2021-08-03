@@ -25,15 +25,12 @@ public class UserController{
     @PostMapping("/{id}")
     public User create(@PathVariable("id") Long id, @RequestBody User user){
         if(id > 0 && id < 10){
-            // Setting data for user id
-            user.setId(id);
-
-            // Setting fullName from firstName and lastName
             String fullName = user.getFirstName() + " " + user.getLastName();
+            user.setId(id);
             user.setFullName(fullName);
         }
         else{
-        
+            //Return 401 ?
         }
         return userService.save(user);
     }
