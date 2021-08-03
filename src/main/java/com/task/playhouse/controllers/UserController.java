@@ -28,7 +28,7 @@ public class UserController{
         user.setId(id);
 
         // Setting fullName from firstName and lastName
-        String fullName = user.getFirstName()+" "+user.getLastName();
+        String fullName = user.getFirstName() + " " + user.getLastName();
         user.setFullName(fullName);
         return userService.save(user);
     }
