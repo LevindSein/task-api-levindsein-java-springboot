@@ -23,11 +23,11 @@ import org.springframework.http.ResponseEntity;
 public class UserController{
     @Autowired
     private UserService userService;
+    private HashMap<String, String> map = new HashMap<>();
 
     //begin API 2
     @GetMapping("/hello")
     public Map<String, String> sayHello() {
-        HashMap<String, String> map = new HashMap<>();
         map.put("status", "200");
         map.put("msg", "Hello World");
         return map;
@@ -44,7 +44,6 @@ public class UserController{
             return new ResponseEntity<>(userService.save(user), HttpStatus.OK);
         }
         
-        HashMap<String, String> map = new HashMap<>();
         map.put("status", "401");
         map.put("msg", "empty");
         return new ResponseEntity<>(map, HttpStatus.UNAUTHORIZED);
@@ -58,7 +57,6 @@ public class UserController{
         if(existId)
             return new ResponseEntity<>(userService.findById(id), HttpStatus.OK);
         else{
-            HashMap<String, String> map = new HashMap<>();
             map.put("status", "401");
             map.put("msg", "empty");
             return new ResponseEntity<>(map, HttpStatus.UNAUTHORIZED);
@@ -72,19 +70,17 @@ public class UserController{
 
     @PostMapping("/destroy/{id}")
     public ResponseEntity<?> deleteById(@PathVariable("id") Long id){
-        HashMap<String, String> map = new HashMap<>();
         boolean existId = userService.existById(id);
         if(existId){
             this.userService.deleteById(id);
             map.put("status", "200");
             map.put("msg", id + " succesfully deleted");
-            return new ResponseEntity<>(map, HttpStatus.UNAUTHORIZED);
         }
         else{
             map.put("status", "401");
             map.put("msg", "empty");
-            return new ResponseEntity<>(map, HttpStatus.UNAUTHORIZED);
         }
+        return new ResponseEntity<>(map, HttpStatus.UNAUTHORIZED);
     }
     //end Topping
 }
