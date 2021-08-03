@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.task.playhouse.models.entities.User;
 import com.task.playhouse.services.UserService;
 
@@ -24,7 +27,10 @@ public class UserController{
     }
 
     @GetMapping("/hello")
-    public String hello(){
-        return "Hello World";
+    public Map<String, String> sayHello() {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("status", "200, OK");
+        map.put("msg", "Hello World");
+        return map;
     }
 }
