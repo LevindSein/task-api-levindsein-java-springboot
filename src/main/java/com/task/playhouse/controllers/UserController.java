@@ -24,6 +24,7 @@ public class UserController{
     @Autowired
     private UserService userService;
 
+    //begin API 2
     @GetMapping("/hello")
     public Map<String, String> sayHello() {
         HashMap<String, String> map = new HashMap<>();
@@ -31,7 +32,9 @@ public class UserController{
         map.put("msg", "Hello World");
         return map;
     }
+    //end API 2
     
+    //begin API 1
     @PostMapping("/{id}")
     public ResponseEntity<?> create(@PathVariable("id") Long id, @RequestBody User user){
         if (id > 0 && id < 10) {
@@ -46,7 +49,9 @@ public class UserController{
         map.put("msg", "empty");
         return new ResponseEntity<>(map, HttpStatus.UNAUTHORIZED);
     }
+    //end API 1
 
+    //begin Topping
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable("id") Long id){
         boolean existId = userService.existById(id);
@@ -81,4 +86,5 @@ public class UserController{
             return new ResponseEntity<>(map, HttpStatus.UNAUTHORIZED);
         }
     }
+    //end Topping
 }
