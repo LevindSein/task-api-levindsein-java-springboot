@@ -29,7 +29,7 @@ public class UserController{
     @GetMapping("/hello")
     public Map<String, String> sayHello() {
         HashMap<String, String> map = new HashMap<>();
-        map.put("status", "200, OK");
+        map.put("status", "200");
         map.put("msg", "Hello World");
         return map;
     }
