@@ -24,6 +24,14 @@ public class UserController{
     @Autowired
     private UserService userService;
 
+    @GetMapping("/hello")
+    public Map<String, String> sayHello() {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("status", "200");
+        map.put("msg", "Hello World");
+        return map;
+    }
+    
     @PostMapping("/{id}")
     public ResponseEntity<?> create(@PathVariable("id") Long id, @RequestBody User user){
         if (id > 0 && id < 10) {
@@ -39,11 +47,38 @@ public class UserController{
         return new ResponseEntity<>(map, HttpStatus.UNAUTHORIZED);
     }
 
-    @GetMapping("/hello")
-    public Map<String, String> sayHello() {
+    @GetMapping("/{id}")
+    public ResponseEntity<?> findById(@PathVariable("id") Long id){
+        boolean existId = userService.existById(id);
+        if(existId)
+            return new ResponseEntity<>(userService.findById(id), HttpStatus.OK);
+        else{
+            HashMap<String, String> map = new HashMap<>();
+            map.put("status", "401");
+            map.put("msg", "empty");
+            return new ResponseEntity<>(map, HttpStatus.UNAUTHORIZED);
+        }
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<?> findAll(){
+        return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
+    }
+
+    @PostMapping("/destroy/{id}")
+    public ResponseEntity<?> deleteById(@PathVariable("id") Long id){
         HashMap<String, String> map = new HashMap<>();
-        map.put("status", "200");
-        map.put("msg", "Hello World");
-        return map;
+        boolean existId = userService.existById(id);
+        if(existId){
+            this.userService.deleteById(id);
+            map.put("status", "200");
+            map.put("msg", id + " succesfully deleted");
+            return new ResponseEntity<>(map, HttpStatus.UNAUTHORIZED);
+        }
+        else{
+            map.put("status", "401");
+            map.put("msg", "empty");
+            return new ResponseEntity<>(map, HttpStatus.UNAUTHORIZED);
+        }
     }
 }

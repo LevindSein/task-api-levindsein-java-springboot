@@ -1,5 +1,7 @@
 package com.task.playhouse.services;
 
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import com.task.playhouse.models.entities.User;
@@ -18,5 +20,25 @@ public class UserService {
     //Create or Update
     public User save(User user){
         return userRepo.save(user);
+    }
+
+    //Get All Record
+    public Iterable<User> findAll(){
+        return userRepo.findAll();
+    }
+
+    //Exist Id
+    public boolean existById(Long id){
+        return userRepo.existsById(id);
+    }
+
+    //Find by Id
+    public Optional<User> findById(Long id){
+        return userRepo.findById(id);
+    }
+
+    //Delete by Id
+    public void deleteById(Long id){
+        this.userRepo.deleteById(id);
     }
 }
