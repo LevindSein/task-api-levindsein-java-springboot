@@ -2,6 +2,7 @@ package com.task.playhouse.controllers;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +23,14 @@ public class UserController{
     private UserService userService;
 
     @PostMapping("/{id}")
-    public User create(@RequestBody User user){
-        return userService.save(user); 
+    public User create(@PathVariable("id") Long id, @RequestBody User user){
+       // Setting data for user id
+        user.setId(id);
+
+        // Setting fullName from firstName and lastName
+        String fullName = user.getFirstName()+" "+user.getLastName();
+        user.setFullName(fullName);
+        return userService.save(user);
     }
 
     @GetMapping("/hello")
