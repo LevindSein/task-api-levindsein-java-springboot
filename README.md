@@ -6,11 +6,11 @@ GET = localhost:9090/api/hello
 
 + Create or update
 
-POST = localhost:9090/api/{id}
-=> Request Body
-{
-   "firstName" : "foo",
-   "lasName" : "foo"
+POST = localhost:9090/api/{id}  
+=> Request Body  
+{  
+   "firstName" : "foo",  
+   "lasName" : "foo"  
 }
 
 + Read by Id
@@ -29,7 +29,7 @@ POST = localhost:9090/api/destroy/{id}
 
 Configuration -> src/main/resources/application.properties
 
-server.port = 9090
+server.port = 9090  
 db_name => spring_boot
 
 Database Migration => Spring Data JPA
