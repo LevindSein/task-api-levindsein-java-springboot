@@ -24,12 +24,17 @@ public class UserController{
 
     @PostMapping("/{id}")
     public User create(@PathVariable("id") Long id, @RequestBody User user){
-       // Setting data for user id
-        user.setId(id);
+        if(id > 0 && id < 10){
+            // Setting data for user id
+            user.setId(id);
 
-        // Setting fullName from firstName and lastName
-        String fullName = user.getFirstName() + " " + user.getLastName();
-        user.setFullName(fullName);
+            // Setting fullName from firstName and lastName
+            String fullName = user.getFirstName() + " " + user.getLastName();
+            user.setFullName(fullName);
+        }
+        else{
+        
+        }
         return userService.save(user);
     }
 
