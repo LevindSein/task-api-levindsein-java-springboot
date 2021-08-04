@@ -21,7 +21,7 @@ Request Body
 ```  
 {  
    "firstName" : "foo",  
-   "lasName" : "foo"  
+   "lastName" : "foo"  
 }
 ```
 :heavy_check_mark: Read by Id
